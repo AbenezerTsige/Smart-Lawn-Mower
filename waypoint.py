@@ -6,8 +6,7 @@ def sample_Route():
   print("Scale:  | = 2 feet\n")
 
   # Prints # 20 feet
-  print("                 # 20    __   __    __   __   __   __   __    __   __   __   End = [20, 20]\n")
-  
+  print("                 # 20                __   __    __   __   __   __   __    __   __   __   End = [20, 20]\n")
   # Prints # 18 - 10
   for i in range(5):
     print("                 #",(18-i*2),"","|    |    |     |    |    |    |    |     |    |    |\n")
@@ -17,31 +16,22 @@ def sample_Route():
     print("                 #",(8-j*2), " ","|    |    |     |    |    |    |    |     |    |    |\n")
   
   # Prints # 0
-  print("Start = [0,0] =  # 0     __   __    __   __   __   __   __    __   __   __ \n")
+  print("Start = [0,0] =  # 0                  __   __    __   __   __   __   __    __   __   __ \n")
 
   """ 
-  #  20      __   __    __   __   __   __   __    __   __   __
-       
+  #  20      __   __    __   __   __   __   __    __   __   __   
   #  18    |    |    |     |    |    |    |    |     |    |    |
-
   #  16    |    |    |     |    |    |    |    |     |    |    |
-
   #  14    |    |    |     |    |    |    |    |     |    |    |
-
   #  12    |    |    |     |    |    |    |    |     |    |    |
-
   #  10    |    |    |     |    |    |    |    |     |    |    |
-
-  #  8    |    |    |     |    |    |    |    |     |    |    |
-
-  #  6    |    |    |     |    |    |    |    |     |    |    |
-
-  #  4    |    |    |     |    |    |    |    |     |    |    |
-
-  #  2    |    |    |     |    |    |    |    |     |    |    |
-
+  #  8     |    |    |     |    |    |    |    |     |    |    |
+  #  6     |    |    |     |    |    |    |    |     |    |    |
+  #  4     |    |    |     |    |    |    |    |     |    |    |
+  #  2     |    |    |     |    |    |    |    |     |    |    |
   #  0      __   __    __   __   __   __   __    __   __   __
   """
+
 def twenybytweny():
   j = 20
   for i in range(6):
@@ -51,14 +41,21 @@ def twenybytweny():
   for i in range(5):
     print("\n[0 ,",j," ]", "[2 ,",j," ]", "[4 ,",j,"] ", "[6 ,", j ," ]", "[8 ,",j," ]" ,"[10 ," ,j ," ]"  ,"[12 ,",j," ]" ,"[14 ,",j," ]" ,"[16 ,",j," ]" ,"[18 ,",j," ]" ,"[20 ,",j," ]")
     j-=2
-  
+
 def map():
   k = 9
   for i in range(10):
     print("\nA",k, "  B",k, "  C",k, "  D",k, "  E",k, "  F",k, "  G",k, "  H",k, "  I",k, "  J",k, "  K",k)
     k-= 1
 
-    """
+def grid():
+  # A = [A0, A1, A2, A3, A4, A5, A6, A7, A8, A9]
+  # A9 = [0,18]
+  #  ......
+  # A1 = [0,2]
+  # A0 = [0,0]
+  ##########################################################################################################################
+  """
     A 9   B 9   C 9   D 9 E 9   F 9   G 9   H 9   I 9   J 9   K 9
     A 8   B 8   C 8   D 8 E 8   F 8   G 8   H 8   I 8   J 8   K 8
     A 7   B 7   C 7   D 7 E 7   F 7   G 7   H 7   I 7   J 7   K 7
@@ -69,22 +66,11 @@ def map():
     A 2   B 2   C 2   D 2 E 2   F 2   G 2   H 2   I 2   J 2   K 2
     A 1   B 1   C 1   D 1 E 1   F 1   G 1   H 1   I 1   J 1   K 1
     A 0   B 0   C 0   D 0 E 0   F 0   G 0   H 0   I 0   J 0   K 0
-    """
-
-def wayp(wp1):#,wp2,wp3,wp4,wp5,wp6,wp7,wp8,wp9,wp10,wp11):
-  # A = [A0, A1, A2, A3, A4, A5, A6, A7, A8, A9]
-  # A9 = [0,18]
-  #  ......
-  # A1 = [0,2]
-  # A0 = [0,0]
-  ##########################################################################################################################
-
+  """
   A = np.array([ [0,0] , [0,2] , [0,4] , [0,6] , [0,8] , [0,10] , [0,12] , [0,14] , [0,16] , [0,18] , [0,20] ])
-  wp1 = np.array([A])
-  return(wp1)
   
   B = np.array([ [2,20] , [2,18] , [2,16] , [2,14] , [2,12] , [2,10] , [2,8] , [2,6] , [2,4] , [2,2] , [2,0] ])
-
+ 
   C = np.array([ [4,0] , [4,2] , [4,4] , [4,6] , [4,8] , [4,10] , [4,12] , [4,14] , [4,16] , [4,18] , [4,20] ])
 
   D = np.array([ [6,0] , [6,2] , [6,4] , [6,6] , [6,8] , [6,10] , [6,12] , [6,14] , [6,16] , [6,18] , [6,20] ])
@@ -103,24 +89,89 @@ def wayp(wp1):#,wp2,wp3,wp4,wp5,wp6,wp7,wp8,wp9,wp10,wp11):
 
   K = np.array([ [20,0] , [20,2] , [20,4] , [20,6] , [20,8] , [20,10] , [20,12] , [20,14] , [20,16] , [20,18] , [20,20] ])
 
-#def current():
+  return [A, B, C, D, E, F, G, H, I, J, K];
 
-#def next():
-Temp = wayp(wp1)
-"""
+def wayp():
+  list = grid()
+  wp0 = list[0]
+  
+  Lbx = 0 # sample left & right beacon values
+  Lby = 0
+  Rbx = 0
+  Rby = 0
+  Lb = [Lbx,Lby]
+  Rb = [Rbx,Rby]
+
+  for i in range(11):
+    # For the first route the X axis remains @ 0
+    # while the Y axis slowly increases by 2 feet 
+    Lby = i*2 
+    Rby = i*2
+    Lb = [Lbx,Lby]
+    Rb = [Rbx,Rby]
+    
+    # Check if Left & Right beacon points with map 
+    # start checking at the 0th point and increase by 2
+    yen = np.equal(wp0[i],Lb)
+    yan = np.equal(wp0[i],Rb)
+    
+    if( (yen[0] and yan[0]) and (yen[1] and yan[1]) ):
+    #print("Scaby @ Start = ", wp0[0])
+    #print("Next up => 0, 2 ")
+      print(wp0[i])
+      print("|")
+     
+
+  wp1 = list[1]
+  wp2 = list[2]
+  wp3 = list[3]
+  wp4 = list[4]
+  wp5 = list[5]
+  wp6 = list[6]
+  wp7 = list[7]
+  wp8 = list[8]
+  wp9 = list[9]
+  wp10 = list[10]
+  
+  return[wp0,wp1,wp2,wp3,wp4,wp5,wp6,wp7,wp8,wp9,wp10]
+
 def horzMap():
-  w = 0
-  Temp = wayp(w)
-  print(Temp.wp1)
+  list = wayp()
 
+  #########################
+  # Left Beacon
+  Lbx = 0    
+  Lby = 0 
+  Lb = np.array([Lbx , Lby])
+
+  #########################
+  # Right Beacon
+  Rbx = 0       
+  Rby = 0
+  Rb = np.array([Rbx , Rby])
+
+  #####################################
+  Now = np.array([Lb , Rb])
+
+  # Now[0] = Lb , Now[1] = Rb
+  # list[0][0]) = > wp0[0] = [0,0] 
+  T1 = np.equal(Now[0] , list[0][0])
+  T2 = np.equal(Now[1] , list[0][0])
+  print(T1)
+  print(T2)
+
+  #if(( np.equal(Now[0] , list[0][0]) ) and ( np.equal(Now[1] , list[0][0]) )) :
+   # print("You are @ start")
+  #else:
+   # print("Where tf r u ?")
+  
 def main():
   #sample_Route()
   #twenybytweny()
   #map() 
-  #wayp()
-  horzMap()
+  #grid()
+  wayp()
+  #horzMap()
 
 main()
-
-"""
 
