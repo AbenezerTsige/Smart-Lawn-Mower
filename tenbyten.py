@@ -1,5 +1,49 @@
 import numpy as np 
+import motor
+import time
+from time import sleep
+import sys
+import RPi.GPIO as GPIO
+import math
+from marvelmind import MarvelmindHedge  # Marvelmind class, claculates Left and Right Beacon values
 
+def LB():
+  Lb = MarvelmindHedge(tty = "/dev/ttyACM2", adr = 2, debug = False) # Beacon 2
+  Lb.start()
+
+  while TRUE
+    try:
+            sleep(1)
+            Lbx = np.array([Lb.returnx()]) 
+            Lby = np.array([Lb.returny()]) 
+            #Lbxy = np.array([Lbx, Lby])
+            if (Lb.distancesUpdated):
+                Lbx 
+                Lby
+                
+        except KeyboardInterrupt:
+            Lb.stop()  # stop and close serial port
+            sys.exit()
+  
+
+  
+  #return Lb
+  
+def RB():
+  Rb = MarvelmindHedge(tty = "/dev/ttyACM1", adr = 1, debug = False) # Beacon 3
+  Rb.start()
+
+  Rb = np.arry([Rbx,Rby])
+  print("Rbx = ", Rbx)
+  
+  Rby = np.array([Rb.return_y])
+  print("Rby = ", Rby)
+     
+  Rb = np.array([Rbx,Rby])
+  print("Rb = ", Rby)
+  
+  return Rb
+  
 def sample_Route():
   print("#######################################################################")
   print("For a 20 by 20 feet area")
@@ -85,27 +129,12 @@ def grid():
 def wp_0():
   list = grid()
   wp0 = list[0]
-  Lbx = 0 # sample left & right beacon values
-  Lby = 0
-  Rbx = 0
-  Rby = 0
-  Lb = np.array([Lbx,Lby])
-  Rb = np.array([Rbx,Rby])
-
+  
   print("######################################## ")
   print("Route A")
   # Route A = wp0 
   for i in range(6):
     
-    # For the first route the X axis remains @ 0
-    # while the Y axis slowly increases by 2 feet 
-    Lby = i*2 
-    Rby = i*2
-    Lb = [Lbx,Lby]
-    Rb = [Rbx,Rby]
-    
-    # Check if Left & Right beacon points with map 
-    # start checking at the 0th point and increase by 2
     yen = np.equal(wp0[i],Lb) 
     yan = np.equal(wp0[i],Rb)
     
@@ -115,12 +144,30 @@ def wp_0():
       print("Lb = ", Lb)
       print("Rb = ", Rb)
       print("|")
-      ### Turn on left and right motor
-      # IR distance 
-      ###################
-      # Done with A = wp0
-      ##################
-
+      
+      motor.up()
+      time.sleep(1.7)
+ 
+    if (i == 5) :
+      yen = False
+      yan = False 
+      print("Stop")
+      
+      motor.right()
+      time.sleep(2)
+      
+      motor.up()
+      time.sleep(0.4)
+      
+      motor.right()
+      time.sleep(0.4)
+      
+      motor.up()
+      time.sleep(0.5)
+      
+      motor.stop()
+      time.sleep(5)
+    
 # Go Down 
 def wp_1():
   list = grid()
@@ -284,47 +331,18 @@ def wp_5():
       print("Rb = ", Rb)
       print("|")
 
-
-def horzMap():
-  list = wayp()
-
-  #########################
-  # Left Beacon
-  Lbx = 0    
-  Lby = 0 
-  Lb = np.array([Lbx , Lby])
-
-  #########################
-  # Right Beacon
-  Rbx = 0       
-  Rby = 0
-  Rb = np.array([Rbx , Rby])
-
-  #####################################
-  Now = np.array([Lb , Rb])
-
-  # Now[0] = Lb , Now[1] = Rb
-  # list[0][0]) = > wp0[0] = [0,0] 
-  T1 = np.equal(Now[0] , list[0][0])
-  T2 = np.equal(Now[1] , list[0][0])
-  print(T1)
-  print(T2)
-
-  #if(( np.equal(Now[0] , list[0][0]) ) and ( np.equal(Now[1] , list[0][0]) )) :
-   # print("You are @ start")
-  #else:
-   # print("Where tf r u ?")
-  
 def main():
   #sample_Route()
   #twenybytweny()
   #map() 
   #grid()
-  wp_0()
-  wp_1()
-  wp_2()
-  wp_3()
-  wp_4()
-  wp_5()
-  
+  #wp_0()
+  #wp_1()
+  #wp_2()
+  #wp_3()
+  #wp_4()
+  #wp_5()
+  LB()
+
 main()
+  
